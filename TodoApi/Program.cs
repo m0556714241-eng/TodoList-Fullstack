@@ -44,11 +44,12 @@ var app = builder.Build();
 app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// סוואגר - פעיל גם בייצור, כדי לבדוק את הנתיבים באוויר
+app.UseSwagger();
+app.UseSwaggerUI();
+
+// הכתובת הראשית - מראה שהשרת פעיל
+app.MapGet("/", () => "ToDo server API is running");
 
 app.MapGet("/items", async (ToDoDbContext db) =>
 {

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = "http://localhost:5267";
+// כתובת השרת - נלקחת ממשתנה סביבה (בקובץ .env במחשב, ובשירות האחסון באוויר)
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 // מיירט בקשה - מצרף את האסימון לכל בקשה שיוצאת לשרת
 axios.interceptors.request.use((config) => {
